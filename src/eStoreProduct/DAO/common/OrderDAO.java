@@ -1,0 +1,37 @@
+package eStoreProduct.DAO.common;
+
+import java.sql.Timestamp;
+import java.util.Date;
+import java.util.List;
+
+import eStoreProduct.model.admin.entities.orderModel;
+
+public interface OrderDAO {
+	void insertOrder(orderModel order);
+
+	List<orderModel> loadOrdersByDate(Timestamp startDate, Timestamp endDate);
+
+	void updateOrderProcessedBy(Long orderId, Integer processedBy);
+
+	void updateOrderShipmentStatus(int orderId, String status);
+
+	public int getNoOfOrders();
+
+	long getTotalOrders();
+
+	List<orderModel> getOrders(int page, int pageSize);
+
+	List<orderModel> getAllOrders();
+
+	List<orderModel> getUnprocessedOrders(int page, int pageSize);
+
+	List<orderModel> getProcessedOnlyOrders(int page, int pageSize);
+
+	long getTotalProcessedRecords();
+
+	long getTotalUnprocessedOrders();
+
+	List<orderModel> getOrdersByDate(Date startDate, Date endDate, int page, int pageSize);
+
+	double getTotalOrdersByDate(Date startDate, Date endDate);
+}
